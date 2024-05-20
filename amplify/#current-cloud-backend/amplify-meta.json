@@ -1,0 +1,56 @@
+{
+  "providers": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-vacely-dev-9dae0-authRole",
+      "UnauthRoleArn": "arn:aws:iam::185517927320:role/amplify-vacely-dev-9dae0-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::185517927320:role/amplify-vacely-dev-9dae0-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-vacely-dev-9dae0-deployment",
+      "UnauthRoleName": "amplify-vacely-dev-9dae0-unauthRole",
+      "StackName": "amplify-vacely-dev-9dae0",
+      "StackId": "arn:aws:cloudformation:us-east-1:185517927320:stack/amplify-vacely-dev-9dae0/16f91130-0e32-11ef-888f-0eeef13d4077",
+      "AmplifyAppId": "d1l67r8r37jr2"
+    }
+  },
+  "auth": {
+    "vacelybb2d473e": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false,
+      "frontendAuthConfig": {
+        "socialProviders": [],
+        "usernameAttributes": [],
+        "signupAttributes": [
+          "EMAIL"
+        ],
+        "passwordProtectionSettings": {
+          "passwordPolicyMinLength": 8,
+          "passwordPolicyCharacters": []
+        },
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [
+          "SMS"
+        ],
+        "verificationMechanisms": [
+          "EMAIL"
+        ]
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-vacely-dev-9dae0-deployment/amplify-cfn-templates/auth/vacelybb2d473e-cloudformation-template.json",
+        "logicalId": "authvacelybb2d473e"
+      },
+      "lastPushTimeStamp": "2024-05-09T18:33:31.474Z",
+      "output": {
+        "UserPoolId": "us-east-1_cTn8HdB7U",
+        "AppClientIDWeb": "1o762sgg5d0h4llqikmijk8ctg",
+        "AppClientID": "3re7nundiaolmauredkbvkfkgb",
+        "IdentityPoolId": "us-east-1:3b6ffeb4-5e03-46c6-9be8-fd834c7f7244",
+        "UserPoolArn": "arn:aws:cognito-idp:us-east-1:185517927320:userpool/us-east-1_cTn8HdB7U",
+        "IdentityPoolName": "vacelybb2d473e_identitypool_bb2d473e__dev",
+        "UserPoolName": "vacelybb2d473e_userpool_bb2d473e"
+      },
+      "lastPushDirHash": "WoRSTm8fCM0W0Q59ol+6y7jmjeM="
+    }
+  }
+}
