@@ -1,6 +1,6 @@
 import './App.css';
 
-import logo from ""./img/logo_vascely_XXX.png';
+
 import {Authenticator} from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
 
@@ -16,24 +16,24 @@ function App() {
     
   
     <Authenticator hideSignUp>
-      {({ sigOut, user}) => (
+      {({ signOut, user}) => (
         
         <div className='App'>
 
           <BrowserRouter>
             <Routes>
-              <Route path='/' element={<Home />}/>
+              <Route path="/" element={<Home />}/>
             </Routes>
           </BrowserRouter>
 
-          <div>
-            <img src={logo} alt="logo marca" title="logo marca" />
-          </div>
+          
+          
+          
           
           <p>
-          E1 (user, username), Bem vindo a vascely
+          {'E1 ${user, username}, Bem vindo a vascely'}
           </p>
-          <button onClick={sigOut}>Sair</button>
+          <button onClick={signOut}>Sair</button>
         </div>
 
       )}
