@@ -12,7 +12,7 @@ Amplify.configure(aws_exports);
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Quicksight />
+    <App />
   </React.StrictMode>
 );
 

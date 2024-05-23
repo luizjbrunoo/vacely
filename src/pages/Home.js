@@ -1,5 +1,5 @@
 import React from 'react'
-import logo from '../assets/img/logo_vascely_XXX.png';
+import logo from '../img/logo_vascely_XXX.png';
 
 const Home = () => {
   return (
@@ -9,7 +9,7 @@ const Home = () => {
         <div className="center">
           <div className="menu">
             <div className="logo">
-            <img src={logo} title="logo" />
+            <img src={logo} alt= "logo" title="logo" />
             </div>
             <div className="item-menu">
             <a href="#">Login</a>

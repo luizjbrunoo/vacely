@@ -13,10 +13,9 @@ import Home from "./pages/Home"
 
 function App() {
   return (
-    
-  
-    <Authenticator hideSignUp>
-      {({ signOut, user}) => (
+   
+    //<Authenticator hideSignUp> 
+      //{({ signOut, user}) => (
         
         <div className='App'>
 
@@ -33,11 +32,11 @@ function App() {
           <p>
           {'E1 ${user, username}, Bem vindo a vascely'}
           </p>
-          <button onClick={signOut}>Sair</button>
+          <button >Sair</button>
         </div>
 
-      )}
-    </Authenticator>
+      //)}
+    //</Authenticator>
     
     
 );
