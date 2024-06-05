@@ -1,45 +1,26 @@
+import React from 'react';
+import { Authenticator, useAuthenticator } from '@aws-amplify/ui-react';
+import '@aws-amplify/ui-react/styles.css';
 import './App.css';
 
 
-import {Authenticator} from '@aws-amplify/ui-react';
-import '@aws-amplify/ui-react/styles.css';
+const AppContent = () => {
+  const { user, signOut } = useAuthenticator((context) => [context.user]);
 
-// 1 config react router
-import {BrowserRouter, Routes, Route} from 'react-router-dom'
-
-// 2 pages
-import Home from "./pages/Home"
-
-
-function App() {
   return (
-   
-    //<Authenticator hideSignUp> 
-      //{({ signOut, user}) => (
-        
-        <div className='App'>
+    <main>
+      <h1>Hello {user ? user.username : 'Guest'}</h1>
+      {user ? <button onClick={signOut}>Sign Out</button> : <p>Please sign in</p>}
+    </main>
+  );
+};
 
-          <BrowserRouter>
-            <Routes>
-              <Route path="/" element={<Home />}/>
-            </Routes>
-          </BrowserRouter>
-
-          
-          
-          
-          
-          <p>
-          {'E1 ${user, username}, Bem vindo a vascely'}
-          </p>
-          <button >Sair</button>
-        </div>
-
-      //)}
-    //</Authenticator>
-    
-    
+const App = () => (
+  <Authenticator>
+    <div className="App">
+    <AppContent />
+    </div>
+  </Authenticator>
 );
-}
 
 export default App;
