@@ -3,8 +3,11 @@ import { I18n } from '@aws-amplify/core';
 const dict = {
   'pt': {
     'Sign In': 'Entrar',
+    'Sign in': 'Entrar',  
     'Sign Up': 'Cadastrar-se',
+    'Sign up': 'Cadastrar-se',
     'Sign Out': 'Sair',
+    'Sign out': 'Sair',
     'Forgot your password?': 'Esqueceu sua senha?',
     'Username': 'Nome de usuário',
     'Password': 'Senha',
