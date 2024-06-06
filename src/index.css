@@ -8,7 +8,7 @@
   --col-black: #000000;
 
 
-  --active-margin-grid: 80px;
+  /* --active-margin-grid: 80px;
 
 
   --custom-ease-in: cubic-bezier(0.77, 0, 0.175, 1);
@@ -17,7 +17,7 @@
   --custom-ease-in-out: cubic-bezier(.42, 0, .31, 1);
   --x: 0;
   --y: 0;
-  --vh: 100vh;
+  --vh: 100vh; */
 }
 
 
@@ -28,18 +28,18 @@
 
 html,
 body {
-  padding: 0;
-  margin: 0;
+  /* padding: 0;
+  margin: 0; */
   /* 1 rem = 10px */
   /* font-size: 62.5%; */
   scroll-behavior: smooth;
   background: var(--col-dark);
-  font-family: 'Inter', sans-serif;
+  /* font-family: 'Inter', sans-serif;
   overflow-x: hidden !important;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  -moz-osx-font-smoothing: grayscale; */
 }
-
+/* 
 body {
   position: relative;
-}
+} */

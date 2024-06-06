@@ -1,33 +1,80 @@
-*{
+* {
     box-sizing: border-box;
     padding: 0;
     margin: 0;
-}
-
-.main{
-    padding: 10% 0;
-}
-
-.center{
+  }
+  
+  .main {
+    /* padding: 10% 0; */
+  }
+  
+  .center {
     max-width: 960px;
     margin: 0 auto;
     padding: 0 2%;
     display: flex;
-}
-
-
-
-.menu{
+  }
+  
+  .menu {
     width: 100%;
     display: flex;
     flex-direction: row;
-    justify-self: space-between;
-}
-
-.menu a{
+    justify-content: space-between; /* Corrigido */
+  }
+  
+  .menu a {
     color: blueviolet;
     text-decoration: none;
-    border: 1% solid blueviolet;
+    border: 1px solid blueviolet; /* Corrigido */
     padding: 3px 10px;
     border-radius: 5px;
-}
+  }
+  
+  .capa {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: left;
+    color: white;
+    width: 100vw;
+    max-height: 300px;
+    position: relative; /* Posicionamento relativo para o contêiner */
+    overflow: hidden; /* Garante que nada saia dos limites do contêiner */
+    min-height: 500px;
+
+  }
+  
+  .text-content {
+    margin-bottom: 20px;
+    /* position: absolute; */
+    width: 100%;
+    max-width: 960px;
+    min-height: 500px;
+    gap:20px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    top: 20px;
+    z-index: 2; /* Z-index mais alto para ficar acima da imagem */
+  }
+  
+  .hero {
+    position: absolute;
+    top: 0; /* Alinhe a imagem corretamente no topo */
+    left: 0; /* Alinhe a imagem corretamente à esquerda */
+    width: 100%;
+
+    /* min-height: 100%; */
+    z-index: 1; /* Menor que o texto, para ficar como fundo */
+  }
+  
+  .capa h1 {
+    font-size: 2.5rem;
+  }
+  
+  .capa h3 {
+    font-size: 1.5rem;
+    font-weight: 300;
+  }
+  

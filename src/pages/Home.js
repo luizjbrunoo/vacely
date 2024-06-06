@@ -1,31 +1,48 @@
-import React from 'react'
+import React from 'react';
+import { useAuthenticator } from '@aws-amplify/ui-react';
 import logo from '../img/logo_vascely_XXX.png';
+import './Home.css'
+import hero from '../img/capa_website_vascely.png'
 
-const Home = () => {
+const Home = ({ onLoginClick }) => {
+  const { user, signOut } = useAuthenticator((context) => [context.user]);
+
   return (
     <div className="App">
-
       <div className="main">
         <div className="center">
           <div className="menu">
             <div className="logo">
-            <img src={logo} alt= "logo" title="logo" />
+              <img src={logo} alt="logo" title="logo" />
             </div>
             <div className="item-menu">
-            <a href="#">Login</a>
+              {user ? (
+                <button onClick={signOut}>Logout</button>
+              ) : (
+                <button onClick={onLoginClick}>Login</button>
+              )}
             </div>
           </div>
-        
         </div>
-        
       </div>
 
       <div className="capa">
-        <h1>Previsão de Vendas para o varejo</h1>
-        <h1>Com Inteligência Artificial</h1>
-        <h3>Mais disponibilidade na prateleira.</h3>
-        <h3>Menos desperdício de alimentos</h3>
+        <img className="hero" src={hero} alt="hero" />
+        <div className="text-content">
+          <h1>
+            Previsão de Vendas para o varejo
+            <br />
+            com Inteligência Artificial
+          </h1>
+          <h3>
+            Mais disponibilidade na prateleira.
+            <br />
+            Menos desperdício de alimentos
+          </h3>
+          <button>Peça uma demonstração</button>
+        </div>
       </div>
+
 
       <div className="segundaaba">
         <h2>Previsões por setor, categorias, até por Produto</h2>
@@ -34,7 +51,7 @@ const Home = () => {
       </div>
 
       <div className="cards">
-        <h3>reduza Desperdícios</h3>
+        <h3>Reduza Desperdícios</h3>
         <p>Quando você sabe exatamente quanto venderá no futuro, não precisa fazer pedidos em excesso.</p>
         <h3>Aumente a receita</h3>
         <p>Prateleiras mais cheias. Mais vendas. Melhor fidelização do cliente.</p>
@@ -46,14 +63,9 @@ const Home = () => {
         <h1>Contato</h1>
       </div>
 
-      <div className="footer">
-
-      </div>
-
-      
-      
+      <div className="footer"></div>
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

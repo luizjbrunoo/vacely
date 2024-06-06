@@ -1,0 +1,47 @@
+.auth-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+  }
+  
+  .app-container {
+    height: 100vh;
+  }
+  
+  .App {
+    text-align: center;
+  }
+  
+  .main {
+    padding: 20px;
+  }
+  
+  .center {
+    margin: auto;
+    width: 100%;
+    /* border: 1px solid #ccc; */
+    padding: 10px;
+  }
+  
+  .menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .logo img {
+    height: 50px;
+  }
+  
+  .item-menu button {
+    padding: 10px 20px;
+    font-size: 16px;
+  }
+  
