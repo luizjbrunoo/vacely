@@ -9,6 +9,20 @@ import criancas from '../img/criancas.jpg'
 const Home = ({ onLoginClick }) => {
   const { user, signOut } = useAuthenticator((context) => [context.user]);
 
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs.sendForm('your_service_id', 'your_template_id', e.target, 'your_user_id')
+      .then((result) => {
+          console.log(result.text);
+          alert('Mensagem enviada com sucesso!');
+      }, (error) => {
+          console.log(error.text);
+          alert('Falha ao enviar mensagem. Tente novamente.');
+      });
+  };
+
+  
   return (
     <div className="App">
                  {/* <div className="hero-container">
@@ -44,7 +58,14 @@ const Home = ({ onLoginClick }) => {
       <br />
       Menos desperdício de alimentos.
     </h3>
-    <button>Peça uma demonstração</button> 
+    <button 
+    //direcionar para contato
+    onClick={() => {
+      const element = document.getElementById('contato');
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+    }
+    >Entre em contato</button> 
     </div>
     <img src={vetor} alt="grafico" className='vetor'/>
 
@@ -79,8 +100,21 @@ const Home = ({ onLoginClick }) => {
        10% de todas as assinaturas para instituições de caridade cuidadosamente selecionadas
         garantimos que, ao escolher a Vascely, você também estará fazendo a sua parte. Juntos podemos
        fazer uma diferença tangível na vida das pessoas que dela necessitam.</h3>
-        </div> </div>
+        </div> 
+        </div>
     
+      <div className="contato" id='contato'>
+        <h1>Fale conosco</h1>
+        <p>Estamos ansiosos para ouvir de você. Envie-nos uma mensagem e entraremos em contato o mais rápido possível.</p>
+        <form>
+          <input type="text" placeholder="Nome" />
+          <input type="email" placeholder="Email" />
+          <textarea placeholder="Mensagem"></textarea>
+          <button>Enviar</button>
+        </form>
+      </div>
+
+
 
       <div className="footer">
         <div className="footer-content">
@@ -106,12 +140,12 @@ const Home = ({ onLoginClick }) => {
             <div className="footer-item-social">
 
 
-                <a href="https://www.linkedin.com/in/teste" target="_blank" rel="noreferrer">
+                <a href="https://www.linkedin.com/company/vascely/" target="_blank" rel="noreferrer">
                   LinkedIn </a> 
                   <p>|</p>
              
                 <a href="https://www.instagram.com/teste" target="_blank" rel="noreferrer">
-                   Instagram</a>
+                   Youtube</a>
 
               </div>
               </div>

@@ -44,7 +44,8 @@ html, body {
   }
 
  .menu button,
- .capa button {
+ .capa button,
+ .contato button {
     background-color: blueviolet;
     color: white;
     border: none;
@@ -58,7 +59,8 @@ html, body {
   }
   
  .menu button:hover,
- .capa button:hover{
+ .capa button:hover,
+ .contato button:hover{
         background-color: rgb(185, 165, 204);
         text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.396);
         color:black;
@@ -240,8 +242,9 @@ html, body {
       color:white;
       text-align: left;
       gap: 50px;
-      margin-bottom: 100px;
+      /* margin-bottom: 100px; */
       max-width: 1300px;
+      padding: 50px;
 
     }
 
@@ -255,6 +258,40 @@ html, body {
       margin-bottom: 10px;
       color: blueviolet
 
+    }
+
+    .contato{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 20px;
+      padding: 40px;
+      background-color: rgba(0, 0, 0, 0.373);
+      color:white;
+      width: 400px;
+      margin: 0 auto;
+      margin-bottom: 50px;
+    }
+
+    .contato h1{
+      font-size: 2.0rem;
+      color: blueviolet;
+    }
+
+    /* input do form */
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      margin-top: 6px;
+      margin-bottom: 16px;
+      resize: vertical;
     }
 
 
