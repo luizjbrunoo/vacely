@@ -1,0 +1,19 @@
+version: 1
+frontend:
+  phases:
+    build:
+      commands:
+        - npm install
+        - npm run build
+  artifacts:
+    baseDirectory: /build
+    files:
+      - '**/*'
+  cache:
+    paths:
+      - node_modules/**/*
+  customHeaders:
+    - pattern: '**/*'
+      headers:
+        - key: 'Content-Security-Policy'
+          value: "frame-ancestors 'self' https://us-east-1.quicksight.aws.amazon.com/"
