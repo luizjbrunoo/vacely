@@ -4,6 +4,7 @@ import logo from '../img/logo_vascely_XXX.png';
 import './Home.css'
 import hero from '../img/capa_website_vascely.png'
 import vetor from '../img/vetor_grafico.jpg'
+import criancas from '../img/criancas.jpg'
 
 const Home = ({ onLoginClick }) => {
   const { user, signOut } = useAuthenticator((context) => [context.user]);
@@ -70,6 +71,15 @@ const Home = ({ onLoginClick }) => {
       </div>
       </div>
 
+      <div className='cestabasica'>
+        <img src={criancas} alt="criancas" />
+        <div>
+        <h1>10% de todas as assinaturas são doadas</h1>
+        <h3>É importante para nós tornarmos o mundo um pouco melhor. Ao doar pelo menos
+       10% de todas as assinaturas para instituições de caridade cuidadosamente selecionadas
+        garantimos que, ao escolher a Vascely, você também estará fazendo a sua parte. Juntos podemos
+       fazer uma diferença tangível na vida das pessoas que dela necessitam.</h3>
+        </div> </div>
     
 
       <div className="footer">
@@ -90,9 +100,7 @@ const Home = ({ onLoginClick }) => {
           <div className="footer-item">
 
             <p>
-              Rua Teste, 123
-              São Paulo - SP
-              01234-567
+            Alameda Salvador, 1057 - Edifício Salvador Shopping Business Torre América - Salas: 911/912 <br/>CEP: 41820-790 Salvador - Bahia
             </p>
             </div>
             <div className="footer-item-social">
