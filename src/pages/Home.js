@@ -5,6 +5,7 @@ import './Home.css'
 import hero from '../img/capa_website_vascely.png'
 import vetor from '../img/vetor_grafico.jpg'
 import criancas from '../img/criancas.jpg'
+import emailjs from 'emailjs-com';
 
 const Home = ({ onLoginClick }) => {
   const { user, signOut } = useAuthenticator((context) => [context.user]);
@@ -106,19 +107,31 @@ const Home = ({ onLoginClick }) => {
       <div className="contato" id='contato'>
         <h1>Fale conosco</h1>
         <p>Estamos ansiosos para ouvir de você. Envie-nos uma mensagem e entraremos em contato o mais rápido possível.</p>
+        <div className='contatocontainer'>
+            <p>
+            Alameda Salvador, 1057 - Edifício Salvador Shopping Business Torre América - Salas: 911/912 <br/>CEP: 41820-790 Salvador - Bahia
+            <br/><br/><br/><br/></p>
+        
+        <div>
+       
         <form>
           <input type="text" placeholder="Nome" />
           <input type="email" placeholder="Email" />
           <textarea placeholder="Mensagem"></textarea>
           <button>Enviar</button>
         </form>
+        </div></div>
       </div>
 
 
 
       <div className="footer">
         <div className="footer-content">
-          <div className="footer-item">
+        <div className="footer-item">
+              <img src={logo} alt="logo" title="logo" />
+          
+            </div>
+            <div className="footer-item">
 
             <p>
               <a href="mailto:
@@ -131,12 +144,7 @@ const Home = ({ onLoginClick }) => {
             </p>
 
           </div>
-          <div className="footer-item">
-
-            <p>
-            Alameda Salvador, 1057 - Edifício Salvador Shopping Business Torre América - Salas: 911/912 <br/>CEP: 41820-790 Salvador - Bahia
-            </p>
-            </div>
+       
             <div className="footer-item-social">
 
 

@@ -5,7 +5,10 @@ const Dashboard = () => {
   return (
     <div className="dashboard">
       <h1>Dashboard</h1>
-      <Quicksight />
+      {/* <Quicksight /> */}
+      <a href="https://us-east-1.quicksight.aws.amazon.com/sn/dashboards/dashboardId" target="_blank" rel="noopener noreferrer">
+            Acesse o Dashboard do QuickSight
+        </a>
     </div>
   );
 };

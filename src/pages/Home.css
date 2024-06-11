@@ -177,7 +177,7 @@ html, body {
   }
 
   .cards p{
-    font-size: 1.2rem;
+    font-size: 1.4em;
     font-weight: 400;
   }
 
@@ -227,7 +227,7 @@ html, body {
     }
 
     .cestabasica img{
-        width: 300px;
+        width: 600px;
         /* height: 100% */
         border-radius: 30px;
         border: 3px solid white;
@@ -249,14 +249,16 @@ html, body {
     }
 
     .cestabasica h3{
-      font-size: 1rem;
+      font-size: 1.5rem;
+
       color:white;
       font-weight: 300;
     }
 
     .cestabasica h1{
       margin-bottom: 10px;
-      color: blueviolet
+      color: blueviolet;
+      font-size: 2.5rem;
 
     }
 
@@ -269,10 +271,24 @@ html, body {
       padding: 40px;
       background-color: rgba(0, 0, 0, 0.373);
       color:white;
-      width: 400px;
+      max-width: 800px;
       margin: 0 auto;
       margin-bottom: 50px;
     }
+
+    .contato p{
+      font-size: 1.4rem;
+      font-weight: 400;
+    }
+
+    .contatocontainer{
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap:20px;
+    }
+
+
 
     .contato h1{
       font-size: 2.0rem;
@@ -332,10 +348,24 @@ html, body {
         gap: 20px;
         padding: 20px;
         margin-bottom: 90px;
+        text-align: center;
       }
 
       .footer{
         height: auto;
         position: relative;
       }
+
+      .contatocontainer{
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+      }
+
+
+    .cestabasica img{
+      width: 300px;
     }
+
+
+  }
