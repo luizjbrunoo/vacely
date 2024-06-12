@@ -1,33 +1,371 @@
-*{
+* {
     box-sizing: border-box;
     padding: 0;
     margin: 0;
+  }
+  
+
+/* Adicione estas regras de estilo ao seu CSS */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
 }
 
-.main{
-    padding: 10% 0;
+.App {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    height: fit-content;
+    padding-bottom: 100px;
+    background-image: url('../img/capa_website_vascely.png');
+    background-size: cover;
+    background-position: center;
 }
 
-.center{
+
+  .main {
+    /* padding: 10% 0; */
+    background-color: rgb(0, 0, 0);
+  }
+  
+  .center {
     max-width: 960px;
     margin: 0 auto;
     padding: 0 2%;
     display: flex;
-}
-
-
-
-.menu{
+  }
+  
+  .menu {
     width: 100%;
     display: flex;
     flex-direction: row;
-    justify-self: space-between;
-}
+    justify-content: space-between; /* Corrigido */
+  }
 
-.menu a{
+ .menu button,
+ .capa button,
+ .contato button {
+    background-color: blueviolet;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    /* animate background color */
+    transition: all 0.3s;
+    text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.71);
+    font-weight: 600;
+  }
+  
+ .menu button:hover,
+ .capa button:hover,
+ .contato button:hover{
+        background-color: rgb(185, 165, 204);
+        text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.396);
+        color:black;
+
+
+    }
+  .menu img{
+    scale: 1.5;
+  }
+  .menu a {
     color: blueviolet;
     text-decoration: none;
-    border: 1% solid blueviolet;
+    border: 1px solid blueviolet; /* Corrigido */
     padding: 3px 10px;
     border-radius: 5px;
+  }
+  .hero {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* min-height: fit-content; */
+    object-fit: cover;
+    z-index: -1; /* Menor que o texto, para ficar como fundo */
+  }
+
+  .capa {
+    display: flex;
+    flex-direction: row;
+    padding: 40px 20px 40px 50px;
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    align-items: center;
+  }
+
+  
+  
+  .capa-texto {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    text-align: left;
+    color: white;
+    width: 100vw;
+    position: relative; /* Posicionamento relativo para o contêiner */
+
+
+    z-index: 2; /* Z-index mais alto para ficar acima da imagem */
+    gap:20px;
 }
+
+
+
+  .capa h1 {
+    font-size: 2.5rem;
+  }
+  
+  .capa h3 {
+    font-size: 1.5rem;
+    font-weight: 300;
+  }
+
+.vetor{
+    height: 200px;
+    border-radius: 30px;
+    border: 3px solid blueviolet;
+
+}
+  
+  .segundaaba{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: left;
+    width: 100vw;
+    padding: 40px;
+    gap: 10px;
+    /* max-height: 300px; */
+    /* min-height: 500px; */
+    color:white;
+    background-color: rgba(0, 0, 0, 0.373);
+  }
+
+  .segundaaba h2    {
+    font-size: 2.2rem;
+    color: blueviolet;
+  }
+
+  .segundaaba p {
+    font-size: 1.4rem;
+    font-weight: 400;
+  }
+
+  .cards {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+    padding: 5% 5% 5% 5%;  
+    color:rgb(255, 255, 255);
+    max-width: 1300px;
+    margin: 0 auto;
+  }
+
+  .cards h3{
+    font-size: 1.8rem;
+    color: blueviolet;
+    margin-bottom: 10px;
+  }
+
+  .cards p{
+    font-size: 1.4em;
+    font-weight: 400;
+  }
+
+  .footer {
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    padding: 20px 0 20px 0;
+    background-color: rgb(0, 0, 0);
+    color: white;
+    width: 100%;
+    height: 100px;
+    bottom: 0;
+    font-weight: 200;
+    z-index: 2;
+  }
+
+    .footer a{
+        color: white;
+        text-decoration: none;
+    }
+
+  .footer-content{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 5% 0 5%;
+  }
+
+  .footer-item-social{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 20px;
+    color: white;
+  }
+
+    .footer-item-social a{
+        color: white;
+        text-decoration: none;
+    }
+
+    .cestabasica img{
+        width: 600px;
+        /* height: 100% */
+        border-radius: 30px;
+        border: 3px solid white;
+
+    }
+
+    .cestabasica{
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      margin: 0 auto;
+      color:white;
+      text-align: left;
+      gap: 50px;
+      /* margin-bottom: 100px; */
+      max-width: 1300px;
+      padding: 50px;
+
+    }
+
+    .cestabasica h3{
+      font-size: 1.5rem;
+
+      color:white;
+      font-weight: 300;
+    }
+
+    .cestabasica h1{
+      margin-bottom: 10px;
+      color: blueviolet;
+      font-size: 2.5rem;
+
+    }
+
+    .contato{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 20px;
+      padding: 40px;
+      background-color: rgba(0, 0, 0, 0.373);
+      color:white;
+      max-width: 800px;
+      margin: 0 auto;
+      margin-bottom: 50px;
+    }
+
+    .contato p{
+      font-size: 1.4rem;
+      font-weight: 400;
+    }
+
+    .contatocontainer{
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap:20px;
+    }
+
+
+
+    .contato h1{
+      font-size: 2.0rem;
+      color: blueviolet;
+    }
+
+    /* input do form */
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      margin-top: 6px;
+      margin-bottom: 16px;
+      resize: vertical;
+    }
+
+
+    @media (max-width: 768px) {
+
+      .App{
+        padding-bottom: 0px;
+      }
+      .center {
+        flex-direction: column;
+        padding: 0 5%;
+      }
+    
+      .capa {
+        padding: 20px;
+        flex-direction: column;
+        gap: 30px;
+      }
+    
+      .capa-texto {
+        text-align: center;
+        align-items: center;
+      }
+    
+      .cards {
+        flex-direction: column;
+        padding: 5% 2%;
+      }
+    
+      .footer-content {
+        flex-direction: column;
+        align-items: center;
+      }
+    
+      .cestabasica {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        padding: 20px;
+        margin-bottom: 90px;
+        text-align: center;
+      }
+
+      .footer{
+        height: auto;
+        position: relative;
+      }
+
+      .contatocontainer{
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+      }
+
+
+    .cestabasica img{
+      width: 300px;
+    }
+
+
+  }
