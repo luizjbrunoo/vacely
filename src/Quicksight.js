@@ -148,64 +148,60 @@
 // }
 
 // export default Quicksight;
+import React, { useState, useEffect } from 'react';
 
+function Quicksight({ accessToken }) {
+  const [embedUrl, setEmbedUrl] = useState('');
 
-import React, { useEffect, useRef, useState } from 'react';
+  const tokenVariants = [
+    `Bearer ${accessToken}`,  // Com Bearer
+    accessToken,              // Sem Bearer
+    `Bearer ${accessToken}`   // Com Bearer, confirmando que a accessToken é uma string
+  ];
 
-function Quicksight({ accessToken }) {  // Adiciona accessToken como prop
-  const dashboardRef = useRef(null);
-  const [embeddedDashboard, setEmbeddedDashboard] = useState(null);
-
-  const fetchDashboardUrl = async () => {
-    console.log("accessToken", accessToken);
+  async function tryFetchDashboardUrl(tokenVariant) {
+    console.log("Tentando com:", tokenVariant);
     try {
       const response = await fetch("https://s2ipunu7rd.execute-api.us-east-1.amazonaws.com/dev/generate-embed-url", {
         method: 'GET',
         headers: {
-          'Authorization': accessToken // Usa o accessToken passado como prop
+          'Authorization': tokenVariant
         }
       });
       const data = await response.json();
-      console.log(data)
-      if (!response.ok) throw new Error(data.message || 'Failed to fetch dashboard URL');
-      return data.EmbedUrl;
-    } catch (error) {
-      console.error('Error fetching dashboard URL:', error);
-      throw error;
-    }
-  };
-
-  useEffect(() => {
-    fetchDashboardUrl()
-  }, []); 
-
-  useEffect(() => {
-    if (accessToken) {  // Certifica-se de que o accessToken está disponível
-      fetchDashboardUrl().then(embedUrl => {
-        const iframe = document.createElement('iframe');
-        iframe.src = embedUrl;
-        iframe.style.width = '100%';  // Ajusta a largura para ocupar todo o espaço disponível
-        iframe.style.height = '100%';  // Ajusta a altura para ocupar todo o espaço disponível
-        dashboardRef.current.appendChild(iframe);
-        setEmbeddedDashboard(iframe);
-      }).catch(console.error);
-    }
-  }, [accessToken]);  // Adiciona accessToken como dependência do useEffect
-
-  useEffect(() => {
-    return () => {
-      if (embeddedDashboard) {
-        embeddedDashboard.remove();
+      if (response.ok) {
+        console.log("Sucesso com:", tokenVariant);
+        setEmbedUrl(data.EmbedUrl);
+        return true;  // Retorna true se a chamada foi bem-sucedida
       }
-    };
-  }, [embeddedDashboard]);
+      throw new Error(data.message || 'Failed to fetch dashboard URL');
+    } catch (error) {
+      console.error('Error with variant:', tokenVariant, error);
+      return false;  // Retorna false se a chamada falhou
+    }
+  }
+
+  useEffect(() => {
+    async function tryVariants() {
+      for (let variant of tokenVariants) {
+        const success = await tryFetchDashboardUrl(variant);
+        if (success) break;  // Para o loop se uma chamada for bem-sucedida
+      }
+    }
+
+    if (accessToken) {
+      tryVariants();
+    }
+  }, [accessToken]);
 
   return (
-    <div style={{ width: '100%', height: '100%' }}>  // Ajusta o estilo para ocupar todo o espaço disponível
+    <div>
       <h1>Embedded QuickSight Dashboard</h1>
-      <div ref={dashboardRef} style={{ width: '100%', height: '100%' }} />
+      {embedUrl ? <iframe src={embedUrl} style={{ width: '100%', height: '500px' }}></iframe> : <p>Loading...</p>}
     </div>
   );
 }
 
+
 export default Quicksight;
+
