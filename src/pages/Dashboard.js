@@ -4,7 +4,7 @@ import logo from '../img/logo_vascely_XXX.png';
 import './Home.css'; // Reutilize o CSS da Home para manter a consistência
 import Quicksight from '../Quicksight'; // Importa o componente Quicksight
 
-const Dashboard = () => {
+const Dashboard = ({accessToken}) => {
   const { user, signOut } = useAuthenticator((context) => [context.user]);
 
   return (
@@ -31,7 +31,7 @@ const Dashboard = () => {
 
       <div className="dashboard">
         <h1>Dashboard</h1>
-        <Quicksight />
+        <Quicksight accessToken={accessToken}/>
       </div>
 
       <div className="footer">

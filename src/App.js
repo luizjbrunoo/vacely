@@ -51,9 +51,17 @@ import Dashboard from './pages/Dashboard';
 import './i18n';
 import { fetchAuthSession } from '@aws-amplify/auth';
 
+
+
+
+// Chame essa função em um contexto onde o usuário está autenticado
+
+
+
 const AppContent = () => {
   const { user } = useAuthenticator((context) => [context.user]);
   const [showAuth, setShowAuth] = useState(false);
+  const [accessToken, setAccessToken] = useState(null);
 
   const handleLoginClick = () => {
     setShowAuth(true);
@@ -63,25 +71,23 @@ const AppContent = () => {
     setShowAuth(false);
   };
 
+  async function retrieveAccessToken() {
+    try {
+      const session = await fetchAuthSession();
+      const accessTokenString = session.tokens.accessToken.toString();  // Chame toString() para obter o JWT como string
+      const accessTokenPayload = session.tokens.accessToken.payload
+       console.log("Access Token toString:", accessTokenString);
+       console.log("Access Token Payload:", accessTokenPayload);
+      setAccessToken(accessTokenPayload);
+      return accessTokenPayload;
+    } catch (error) {
+      console.error("Error fetching access token:", error);
+    }
+  }
+
   useEffect(() => {
-    const fetchToken = async () => {
-      if (user) {
-        try {
-          const session = await fetchAuthSession();
-          if (session && session.tokens && session.tokens.idToken && session.tokens.idToken.payload) {
-            const token = session.tokens.idToken.payload;
-            localStorage.setItem('jwt', token);
-            console.log("JWT Token:", token);
-          } else {
-            console.error("Session or token is not defined", session);
-          }
-        } catch (error) {
-          console.error("Error fetching JWT token:", error);
-        }
-      }
-    };
-    
-    fetchToken();
+retrieveAccessToken();
+
   }, [user]);
 
   return (
@@ -89,7 +95,8 @@ const AppContent = () => {
       <Router>
         <Routes>
           <Route path="/" element={<Home onLoginClick={handleLoginClick} />} />
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/dashboard" element={<Dashboard accessToken={accessToken} />
+} />
         </Routes>
       </Router>
       {showAuth && (

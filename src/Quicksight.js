@@ -96,40 +96,101 @@
 // export default Quicksight;
 
 
+// import React, { useEffect, useRef, useState } from 'react';
+
+// function Quicksight() {
+//   const dashboardRef = useRef(null);
+//   const [embeddedDashboard, setEmbeddedDashboard] = useState(null);
+
+//   // Função para buscar a URL do dashboard
+//   const fetchDashboardUrl = async () => {
+//     try {
+//       const response = await fetch("https://API_ENDPOINT/dev/generate-embed-url", {
+//         method: 'GET',
+//         headers: {
+//           'Authorization': 'Bearer YOUR_ACCESS_TOKEN' // Substituir YOUR_ACCESS_TOKEN pelo token real
+//         }
+//       });
+//       const data = await response.json();
+//       if (!response.ok) throw new Error(data.message || 'Failed to fetch dashboard URL');
+//       return data.EmbedUrl;
+//     } catch (error) {
+//       console.error('Error:', error);
+//       throw error;
+//     }
+//   };
+
+//   useEffect(() => {
+//     fetchDashboardUrl().then(embedUrl => {
+//       const iframe = document.createElement('iframe');
+//       iframe.src = embedUrl;
+//       iframe.style.width = '600px';
+//       iframe.style.height = '500px';
+//       dashboardRef.current.appendChild(iframe);
+//       setEmbeddedDashboard(iframe);
+//     }).catch(console.error);
+//   }, []);
+
+//   useEffect(() => {
+//     return () => {
+//       if (embeddedDashboard) {
+//         embeddedDashboard.remove();
+//       }
+//     };
+//   }, [embeddedDashboard]);
+
+//   return (
+//     <div>
+//       <h1>Embedded QuickSight Dashboard</h1>
+//       <div ref={dashboardRef} />
+//     </div>
+//   );
+// }
+
+// export default Quicksight;
+
+
 import React, { useEffect, useRef, useState } from 'react';
 
-function Quicksight() {
+function Quicksight({ accessToken }) {  // Adiciona accessToken como prop
   const dashboardRef = useRef(null);
   const [embeddedDashboard, setEmbeddedDashboard] = useState(null);
 
-  // Função para buscar a URL do dashboard
   const fetchDashboardUrl = async () => {
+    console.log("accessToken", accessToken);
     try {
-      const response = await fetch("https://API_ENDPOINT/dev/generate-embed-url", {
+      const response = await fetch("https://s2ipunu7rd.execute-api.us-east-1.amazonaws.com/dev/generate-embed-url", {
         method: 'GET',
         headers: {
-          'Authorization': 'Bearer YOUR_ACCESS_TOKEN' // Substituir YOUR_ACCESS_TOKEN pelo token real
+          'Authorization': accessToken // Usa o accessToken passado como prop
         }
       });
       const data = await response.json();
+      console.log(data)
       if (!response.ok) throw new Error(data.message || 'Failed to fetch dashboard URL');
       return data.EmbedUrl;
     } catch (error) {
-      console.error('Error:', error);
+      console.error('Error fetching dashboard URL:', error);
       throw error;
     }
   };
 
   useEffect(() => {
-    fetchDashboardUrl().then(embedUrl => {
-      const iframe = document.createElement('iframe');
-      iframe.src = embedUrl;
-      iframe.style.width = '600px';
-      iframe.style.height = '500px';
-      dashboardRef.current.appendChild(iframe);
-      setEmbeddedDashboard(iframe);
-    }).catch(console.error);
-  }, []);
+    fetchDashboardUrl()
+  }, []); 
+
+  useEffect(() => {
+    if (accessToken) {  // Certifica-se de que o accessToken está disponível
+      fetchDashboardUrl().then(embedUrl => {
+        const iframe = document.createElement('iframe');
+        iframe.src = embedUrl;
+        iframe.style.width = '100%';  // Ajusta a largura para ocupar todo o espaço disponível
+        iframe.style.height = '100%';  // Ajusta a altura para ocupar todo o espaço disponível
+        dashboardRef.current.appendChild(iframe);
+        setEmbeddedDashboard(iframe);
+      }).catch(console.error);
+    }
+  }, [accessToken]);  // Adiciona accessToken como dependência do useEffect
 
   useEffect(() => {
     return () => {
@@ -140,9 +201,9 @@ function Quicksight() {
   }, [embeddedDashboard]);
 
   return (
-    <div>
+    <div style={{ width: '100%', height: '100%' }}>  // Ajusta o estilo para ocupar todo o espaço disponível
       <h1>Embedded QuickSight Dashboard</h1>
-      <div ref={dashboardRef} />
+      <div ref={dashboardRef} style={{ width: '100%', height: '100%' }} />
     </div>
   );
 }
