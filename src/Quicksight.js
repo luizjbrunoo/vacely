@@ -154,19 +154,19 @@ function Quicksight({ accessToken }) {
   const [embedUrl, setEmbedUrl] = useState('');
 
   const tokenVariants = [
-    `Bearer ${accessToken}`,  // Com Bearer
-    accessToken,              // Sem Bearer
-    `Bearer ${accessToken}`   // Com Bearer, confirmando que a accessToken é uma string
+    accessToken   // Com Bearer, confirmando que a accessToken é uma string
   ];
 
   async function tryFetchDashboardUrl(tokenVariant) {
     console.log("Tentando com:", tokenVariant);
+    const headerprinted = {
+      'Authorization': tokenVariant
+    }
+    console.log("Header:", headerprinted);
     try {
       const response = await fetch("https://s2ipunu7rd.execute-api.us-east-1.amazonaws.com/dev/generate-embed-url", {
         method: 'GET',
-        headers: {
-          'Authorization': tokenVariant
-        }
+        headers: headerprinted
       });
       const data = await response.json();
       if (response.ok) {
