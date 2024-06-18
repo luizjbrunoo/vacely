@@ -78,8 +78,8 @@ const AppContent = () => {
       const accessTokenPayload = session.tokens.accessToken.payload
        console.log("Access Token toString:", accessTokenString);
        console.log("Access Token Payload:", accessTokenPayload);
-      setAccessToken(accessTokenPayload);
-      return accessTokenPayload;
+      setAccessToken(accessTokenString);
+      return accessTokenString;
     } catch (error) {
       console.error("Error fetching access token:", error);
     }
