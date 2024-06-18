@@ -11,6 +11,7 @@
     "@testing-library/user-event": "^13.5.0",
     "amazon-quicksight-embedding-sdk": "^2.7.0",
     "aws-amplify": "^6.0.0",
+    "aws-jwt-verify": "^4.0.1",
     "emailjs-com": "^3.2.0",
     "json-server": "^0.17.0",
     "react": "^18.2.0",

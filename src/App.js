@@ -50,7 +50,7 @@ import Home from './pages/Home';
 import Dashboard from './pages/Dashboard';
 import './i18n';
 import { fetchAuthSession } from '@aws-amplify/auth';
-
+import Upload from './pages/Upload';
 
 
 
@@ -95,8 +95,9 @@ retrieveAccessToken();
       <Router>
         <Routes>
           <Route path="/" element={<Home onLoginClick={handleLoginClick} />} />
-          <Route path="/dashboard" element={<Dashboard accessToken={accessToken} />
-} />
+          <Route path="/dashboard" element={<Dashboard accessToken={accessToken} />} />
+          <Route path="/upload" element={<Upload accessToken={accessToken} />} />
+
         </Routes>
       </Router>
       {showAuth && (

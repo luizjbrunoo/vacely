@@ -149,6 +149,8 @@
 
 // export default Quicksight;
 import React, { useState, useEffect } from 'react';
+import { SimpleJwksCache } from "aws-jwt-verify/jwk";
+import { SimpleJsonFetcher } from "aws-jwt-verify/https";
 
 function Quicksight({ accessToken }) {
   const [embedUrl, setEmbedUrl] = useState('');

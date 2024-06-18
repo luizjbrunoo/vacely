@@ -45,7 +45,8 @@ html, body {
 
  .menu button,
  .capa button,
- .contato button {
+ .contato button,
+ .dashboard button {
     background-color: blueviolet;
     color: white;
     border: none;
@@ -60,7 +61,8 @@ html, body {
   
  .menu button:hover,
  .capa button:hover,
- .contato button:hover{
+ .contato button:hover,
+ .dashboard button:hover{
         background-color: rgb(185, 165, 204);
         text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.396);
         color:black;
@@ -310,6 +312,16 @@ html, body {
       resize: vertical;
     }
 
+    .dashboard{
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      gap: 20px;
+      padding: 40px;
+
+      max-width: 800px;
+      margin: 40px;
+    }
 
     @media (max-width: 768px) {
 
