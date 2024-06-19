@@ -18,7 +18,11 @@
   .App {
     text-align: center;
   }
-  
+
+#signUp-tab {
+    display: none !important;
+}
+
   .main {
     padding: 20px;
   }
