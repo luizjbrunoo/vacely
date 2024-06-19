@@ -200,7 +200,7 @@ function Quicksight({ accessToken }) {
   return (
     <div>
       {/* <h1>Embedded QuickSight Dashboard</h1> */}
-      {embedUrl ? <iframe src={embedUrl} style={{ width: '100%', height: '500px' }}></iframe> : <p>Loading...</p>}
+      {embedUrl ? <iframe src={embedUrl} style={{ width: '100vw', height: '80vh' }}></iframe> : <p>Loading...</p>}
     </div>
   );
 }
