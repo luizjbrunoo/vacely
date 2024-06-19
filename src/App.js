@@ -76,9 +76,11 @@ const AppContent = () => {
       const session = await fetchAuthSession();
       const accessTokenString = session.tokens.accessToken.toString();  // Chame toString() para obter o JWT como string
       const accessTokenPayload = session.tokens.accessToken.payload
-       console.log("Access Token toString:", accessTokenString);
-       console.log("Access Token Payload:", accessTokenPayload);
+      //  console.log("Access Token toString:", accessTokenString);
+      //  console.log("Access Token Payload:", accessTokenPayload);
       setAccessToken(accessTokenString);
+      setShowAuth(false);
+
       return accessTokenString;
     } catch (error) {
       console.error("Error fetching access token:", error);
