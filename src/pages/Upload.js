@@ -81,12 +81,14 @@ const Upload = ({ accessToken }) => {
             <div className="item-menu">
               <a href="/">HOME</a>
             </div>
-            <div className="item-menu">
+            {user && (<>
+              <div className="item-menu">
               <a href="/upload">UPLOAD</a>
             </div>
             <div className="item-menu">
               <a href="/dashboard">DASHBOARD</a>
             </div>
+            </>)}
 
 
 
@@ -107,6 +109,9 @@ const Upload = ({ accessToken }) => {
 
       <div className="dashboard">
         <h1>Upload</h1>
+       
+        {user ? (
+        <>
         <p>Carregue aqui seus dados no formato .csv e informe a metragem quadrada da loja e sua quantidade de funcionários.</p>
         <input type="file" id="file" name="file" accept=".csv" multiple/>
         <div>
@@ -120,6 +125,14 @@ const Upload = ({ accessToken }) => {
         <button onClick={uploadSubmit}>Enviar</button>
         {loading && <div className="loading">Carregando...</div>}
         {sentFile && <p>Arquivo enviado com sucesso! Aguarde tratamento de dados pela nossa equipe.</p>}
+      </>
+
+        ) : (<div>
+          <p>Para acessar a página de upload, faça login na home page.</p>
+        </div>)}
+       
+        
+      
       </div>
     </div>
   );

@@ -36,12 +36,15 @@ const Home = ({ onLoginClick }) => {
             <div className="logo">
               <img src={logo} alt="logo" title="logo" />
             </div>
-            <div className="item-menu">
+            {user && (<>
+              <div className="item-menu">
               <a href="/upload">UPLOAD</a>
             </div>
             <div className="item-menu">
               <a href="/dashboard">DASHBOARD</a>
             </div>
+            </>)}
+           
             <div className="item-menu">
               {user ? (
                 <button onClick={signOut}>Logout</button>
@@ -74,7 +77,7 @@ const Home = ({ onLoginClick }) => {
     }
     >Entre em contato</button> 
     </div>
-    <img src={vetor} alt="grafico" className='vetor'/>
+    {/* <img src={vetor} alt="grafico" className='vetor'/> */}
 
 </div>
 
@@ -137,7 +140,7 @@ const Home = ({ onLoginClick }) => {
               <img src={logo} alt="logo" title="logo" />
           
             </div>
-            <div className="footer-item">
+            {/* <div className="footer-item">
 
             <p>
               <a href="mailto:
@@ -149,7 +152,7 @@ const Home = ({ onLoginClick }) => {
                 +55 11 99999-9999</a>
             </p>
 
-          </div>
+          </div> */}
        
             <div className="footer-item-social">
 

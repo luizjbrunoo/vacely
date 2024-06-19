@@ -18,12 +18,14 @@ const Dashboard = ({accessToken}) => {
             <div className="item-menu">
               <a href="/">HOME</a>
             </div>
-            <div className="item-menu">
+            {user && (<>
+              <div className="item-menu">
               <a href="/upload">UPLOAD</a>
             </div>
             <div className="item-menu">
               <a href="/dashboard">DASHBOARD</a>
             </div>
+            </>)}
 
             <div className="item-menu">
               {user ? (
@@ -41,10 +43,15 @@ const Dashboard = ({accessToken}) => {
 
       <div className="dashboard">
         <h1>Dashboard</h1>
+        {user ? (
         <Quicksight accessToken={accessToken}/>
+
+        ) : (<div>
+          <p>Para acessar o dashboard, faça login na home page.</p>
+        </div>)}
       </div>
 
-      <div className="footer">
+      {/* <div className="footer">
         <div className="footer-content">
           <div className="footer-item">
             <img src={logo} alt="logo" title="logo" />
@@ -69,7 +76,7 @@ const Dashboard = ({accessToken}) => {
             </a>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };
