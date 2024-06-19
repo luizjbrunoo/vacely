@@ -166,7 +166,7 @@ function Quicksight({ accessToken }) {
     }
     console.log("Header:", headerprinted);
     try {
-      const response = await fetch("https://s2ipunu7rd.execute-api.us-east-1.amazonaws.com/dev/generate-embed-url", {
+      const response = await fetch("https://s2ipunu7rd.execute-api.us-east-1.amazonaws.com/Prod/generate-embed-url", {
         method: 'GET',
         headers: headerprinted
       });
