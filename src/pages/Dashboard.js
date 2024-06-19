@@ -16,9 +16,19 @@ const Dashboard = ({accessToken}) => {
               <img src={logo} alt="logo" title="logo" />
             </div>
             <div className="item-menu">
+              <a href="/">HOME</a>
+            </div>
+            <div className="item-menu">
+              <a href="/upload">UPLOAD</a>
+            </div>
+            <div className="item-menu">
+              <a href="/dashboard">DASHBOARD</a>
+            </div>
+
+            <div className="item-menu">
               {user ? (
                 <>
-                  <span>Olá, {user.username}!</span>
+                  <span style={{color:'white'}}>Olá, {user.username}!</span><span> </span>
                   <button onClick={signOut}>Logout</button>
                 </>
               ) : (

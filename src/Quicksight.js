@@ -149,6 +149,8 @@
 
 // export default Quicksight;
 import React, { useState, useEffect } from 'react';
+import { SimpleJwksCache } from "aws-jwt-verify/jwk";
+import { SimpleJsonFetcher } from "aws-jwt-verify/https";
 
 function Quicksight({ accessToken }) {
   const [embedUrl, setEmbedUrl] = useState('');
@@ -164,7 +166,7 @@ function Quicksight({ accessToken }) {
     }
     console.log("Header:", headerprinted);
     try {
-      const response = await fetch("https://s2ipunu7rd.execute-api.us-east-1.amazonaws.com/dev/generate-embed-url", {
+      const response = await fetch("https://s2ipunu7rd.execute-api.us-east-1.amazonaws.com/Prod/generate-embed-url", {
         method: 'GET',
         headers: headerprinted
       });
@@ -177,6 +179,7 @@ function Quicksight({ accessToken }) {
       throw new Error(data.message || 'Failed to fetch dashboard URL');
     } catch (error) {
       console.error('Error with variant:', tokenVariant, error);
+      alert('Erro ao buscar a URL do dashboard. Verifique com a equipe de suporte.');
       return false;  // Retorna false se a chamada falhou
     }
   }
@@ -196,7 +199,7 @@ function Quicksight({ accessToken }) {
 
   return (
     <div>
-      <h1>Embedded QuickSight Dashboard</h1>
+      {/* <h1>Embedded QuickSight Dashboard</h1> */}
       {embedUrl ? <iframe src={embedUrl} style={{ width: '100%', height: '500px' }}></iframe> : <p>Loading...</p>}
     </div>
   );
