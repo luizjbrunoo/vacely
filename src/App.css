@@ -23,6 +23,10 @@
     display: none !important;
 }
 
+#signIn-tab {
+    pointer-events: none;  /* Desabilita cliques e outras interações do mouse */
+}
+
   .main {
     padding: 20px;
   }
