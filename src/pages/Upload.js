@@ -6,6 +6,7 @@ import './Home.css';
 const Upload = ({ accessToken }) => {
     const { user, signOut } = useAuthenticator((context) => [context.user]);
     const [loading, setLoading] = useState(false)
+    const [sentFile, setSentFile] = useState(false)
     const uploadSubmit = async () => { 
     const file = document.getElementById('file').files[0];
     //if (!file) return alert('Selecione um arquivo para enviar.');
@@ -54,14 +55,16 @@ const Upload = ({ accessToken }) => {
           return;
         }
         alert('Arquivo enviado com sucesso: ' + responseData.message);
+        setSentFile(true);
+        setLoading(false);
       };
       reader.onerror = error => console.log('Error reading file:', error);
       reader.readAsDataURL(file);
     } catch (error) {
       console.error('Erro ao processar a requisição', error);
       alert('Erro ao processar a requisição: ' + error.message);
+      setLoading(false);
     }
-    setLoading(false);
   };
 
   return (
@@ -72,10 +75,26 @@ const Upload = ({ accessToken }) => {
             <div className="logo">
               <img src={logo} alt="logo" title="logo" />
             </div>
+
+            {/* item-menu UPLOAD redirect page to /upload */}
+            
+            <div className="item-menu">
+              <a href="/">HOME</a>
+            </div>
+            <div className="item-menu">
+              <a href="/upload">UPLOAD</a>
+            </div>
+            <div className="item-menu">
+              <a href="/dashboard">DASHBOARD</a>
+            </div>
+
+
+
+
             <div className="item-menu">
               {user ? (
                 <>
-                  <span style={{color:'white'}}>Olá, {user.username}!</span>
+                  <span style={{color:'white'}}>Olá, {user.username}!</span><span> </span>
                   <button onClick={signOut}>Logout</button>
                 </>
               ) : (
@@ -100,6 +119,7 @@ const Upload = ({ accessToken }) => {
         </div>
         <button onClick={uploadSubmit}>Enviar</button>
         {loading && <div className="loading">Carregando...</div>}
+        {sentFile && <p>Arquivo enviado com sucesso! Aguarde tratamento de dados pela nossa equipe.</p>}
       </div>
     </div>
   );

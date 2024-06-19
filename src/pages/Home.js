@@ -25,7 +25,7 @@ const Home = ({ onLoginClick }) => {
 
   
   return (
-    <div className="App">
+    <div className="App" style={{backgroundColor:"black"}}>
                  {/* <div className="hero-container">
         <img className="hero" src={hero} alt="hero" />
       </div> */}
@@ -35,6 +35,12 @@ const Home = ({ onLoginClick }) => {
           <div className="menu">
             <div className="logo">
               <img src={logo} alt="logo" title="logo" />
+            </div>
+            <div className="item-menu">
+              <a href="/upload">UPLOAD</a>
+            </div>
+            <div className="item-menu">
+              <a href="/dashboard">DASHBOARD</a>
             </div>
             <div className="item-menu">
               {user ? (

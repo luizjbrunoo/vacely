@@ -179,6 +179,7 @@ function Quicksight({ accessToken }) {
       throw new Error(data.message || 'Failed to fetch dashboard URL');
     } catch (error) {
       console.error('Error with variant:', tokenVariant, error);
+      alert('Erro ao buscar a URL do dashboard. Verifique com a equipe de suporte.');
       return false;  // Retorna false se a chamada falhou
     }
   }
@@ -198,7 +199,7 @@ function Quicksight({ accessToken }) {
 
   return (
     <div>
-      <h1>Embedded QuickSight Dashboard</h1>
+      {/* <h1>Embedded QuickSight Dashboard</h1> */}
       {embedUrl ? <iframe src={embedUrl} style={{ width: '100%', height: '500px' }}></iframe> : <p>Loading...</p>}
     </div>
   );
