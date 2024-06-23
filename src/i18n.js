@@ -25,6 +25,7 @@ const dict = {
     'Create Account': 'Criar conta',
     'Confirm Password': 'Confirmar senha',
     'Please confirm your Password': 'Por favor, confirme sua senha',
+    'Change Password': 'Mudar senha',
     
   },
 };
