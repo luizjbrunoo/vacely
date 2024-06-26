@@ -152,6 +152,9 @@ const Home = ({ onLoginClick }) => {
           <div className="footer-item">
             <img src={logo} alt="logo" title="logo" />
           </div>
+          <div className="footer-item">
+          vascely 2024 © - Direitos reservados
+          </div>
           <div className="footer-item-social">
             <a href="https://www.linkedin.com/company/vascely/" target="_blank" rel="noreferrer">LinkedIn </a> 
             <p>|</p>
