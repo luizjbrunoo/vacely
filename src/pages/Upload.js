@@ -1,5 +1,8 @@
 import React, {useState} from 'react';
 import { useAuthenticator } from '@aws-amplify/ui-react';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { useStore } from '../Store';  // Import useStore
+
 import logo from '../img/logo_vascely_XXX.png';
 import './Home.css';
 
@@ -7,6 +10,9 @@ const Upload = ({ accessToken }) => {
     const { user, signOut } = useAuthenticator((context) => [context.user]);
     const [loading, setLoading] = useState(false)
     const [sentFile, setSentFile] = useState(false)
+    const navigate = useNavigate();
+    const { redirected, setRedirected, resetStore } = useStore();  // Get resetStore from useStore
+
     const uploadSubmit = async () => { 
     const file = document.getElementById('file').files[0];
     //if (!file) return alert('Selecione um arquivo para enviar.');
@@ -22,6 +28,7 @@ const Upload = ({ accessToken }) => {
       console.error('Usuário ou username não definido:', user);
       return;
     }
+
 
     try {
         setLoading(true);
@@ -67,6 +74,12 @@ const Upload = ({ accessToken }) => {
     }
   };
 
+  const handleSignout = () => {
+    signOut();
+    navigate('/');
+  }
+  
+
   return (
     <div className="App2">
       <div className="main">
@@ -97,7 +110,7 @@ const Upload = ({ accessToken }) => {
               {user ? (
                 <>
                   <span style={{color:'white'}}>Olá, {user.username}!</span><span> </span>
-                  <button onClick={signOut}>Logout</button>
+                  <button onClick={handleSignout}>Logout</button>
                 </>
               ) : (
                 <button>Login</button>

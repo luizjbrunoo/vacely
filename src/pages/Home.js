@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuthenticator } from '@aws-amplify/ui-react';
+import { useStore } from '../Store';  // Import useStore
 import logo from '../img/logo_vascely_XXX.png';
 import './Home.css';
 import hero from '../img/capa_website_vascely.png';
@@ -8,6 +10,16 @@ import criancas from '../img/criancas.jpg';
 
 const Home = ({ onLoginClick }) => {
   const { user, signOut } = useAuthenticator((context) => [context.user]);
+  const { redirected, setRedirected, resetStore } = useStore();  // Get resetStore from useStore
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    if (user && !redirected && location.pathname === '/') {
+      setRedirected(true);
+      navigate('/upload');
+    }
+  }, [user, redirected, navigate, location.pathname, setRedirected]);
 
   const [formData, setFormData] = useState({
     name: '',
@@ -33,6 +45,12 @@ const Home = ({ onLoginClick }) => {
     .catch(error => alert('Falha ao enviar mensagem.'));
   };
 
+
+  const handleSignout = () => {
+    signOut();
+    resetStore();
+  }
+
   return (
     <div className="App" style={{backgroundColor:"black"}}>
       <div className="main">
@@ -51,7 +69,7 @@ const Home = ({ onLoginClick }) => {
             </>)}
             <div className="item-menu">
               {user ? (
-                <button onClick={signOut}>Logout</button>
+                <button onClick={handleSignout}>Logout</button>
               ) : (
                 <button onClick={onLoginClick}>Login</button>
               )}

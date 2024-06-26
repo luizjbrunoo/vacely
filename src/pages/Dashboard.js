@@ -1,12 +1,22 @@
 import React from 'react';
 import { useAuthenticator } from '@aws-amplify/ui-react';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { useStore } from '../Store';  // Import useStore
+
 import logo from '../img/logo_vascely_XXX.png';
 import './Home.css'; // Reutilize o CSS da Home para manter a consistência
 import Quicksight from '../Quicksight'; // Importa o componente Quicksight
 
 const Dashboard = ({accessToken}) => {
   const { user, signOut } = useAuthenticator((context) => [context.user]);
+  const navigate = useNavigate();
+  const { redirected, setRedirected, resetStore } = useStore();  // Get resetStore from useStore
 
+  const handleSignout = () => {
+    signOut();
+        navigate('/');
+  }
+  
   return (
     <div className="App2">
       <div className="main">
@@ -31,7 +41,7 @@ const Dashboard = ({accessToken}) => {
               {user ? (
                 <>
                   <span style={{color:'white'}}>Olá, {user.username}!</span><span> </span>
-                  <button onClick={signOut}>Logout</button>
+                  <button onClick={handleSignout}>Logout</button>
                 </>
               ) : (
                 <button>Login</button>
